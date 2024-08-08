@@ -1,0 +1,21 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <form method="POST" action="{% url 'add' %}">
+        {% csrf_token %}
+        <input type="text" name="task" placeholder="New task">
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for todo in todos %}
+            <li>{{ todo.task }} - {{ todo.completed }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
